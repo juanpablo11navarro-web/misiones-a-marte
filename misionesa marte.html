@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exploración de Marte y las misiones espaciales</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font-family:Arial,Helvetica,sans-serif;color:#e8edf8;background:#080e20;background-image:linear-gradient(rgba(5,10,27,.83),rgba(5,10,27,.88)),url("https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=800&q=72?auto=format&fit=crop&w=1600&q=70");background-size:cover;background-position:center;background-attachment:fixed;line-height:1.6}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}section{scroll-margin-top:90px}
+.header{position:sticky;top:0;z-index:100;min-height:75px;padding:15px 4.5%;display:flex;align-items:center;justify-content:space-between;gap:20px;background:rgba(8,14,32,.97);border-bottom:1px solid rgba(255,255,255,.12)}
+.logo{font-size:19px;font-weight:bold;white-space:nowrap}.logo span{margin-right:8px}
+.nav{display:flex;flex-wrap:wrap;gap:22px}.nav a{color:#c7cede;font-size:13px;transition:.3s}.nav a:hover{color:white}
+.eyebrow{display:block;margin-bottom:12px;color:#d28bc7;font-size:10px;letter-spacing:1.5px;font-weight:bold}
+h1{font-size:clamp(30px,4vw,46px);line-height:1.2;margin-bottom:17px}h2{font-size:25px;line-height:1.3;margin-bottom:13px}h3{font-size:17px;margin-bottom:12px}
+p{color:#c0c9d9;font-size:14px}
+.hero{padding:55px 4.5%;min-height:390px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:35px}
+.hero-text p{max-width:600px;margin-bottom:24px}.hero-image img{width:100%;height:270px;object-fit:cover;border:1px solid rgba(255,255,255,.12)}
+.buttons{display:flex;flex-wrap:wrap;gap:12px}.btn{display:inline-block;padding:11px 17px;border:1px solid rgba(255,255,255,.2);font-size:12px;font-weight:bold;cursor:pointer;transition:.3s}
+.primary{background:#2463eb;color:white;border-color:#2463eb}.primary:hover{background:#174ac0}
+.secondary{background:rgba(255,255,255,.04);color:#e8edf8}.secondary:hover{background:rgba(255,255,255,.13)}
+.destinations{display:flex;gap:30px;margin-top:10px}.destinations span,.card small,.action-panel small,.reflection small,.contact-form small{display:block;color:#8793aa;font-size:10px}
+.section,.page-content{padding:35px 4.5%}.section-intro{max-width:1050px;margin-bottom:25px}.page-heading{margin-bottom:30px}.page-heading p{max-width:1050px}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.card{background:rgba(15,24,47,.94);border:1px solid rgba(255,255,255,.12);overflow:hidden;transition:.3s}.card:hover{transform:translateY(-4px);border-color:rgba(120,157,255,.5)}
+.card>img{width:100%;height:155px;object-fit:cover}.card-content{padding:17px}.card-content p{margin-bottom:17px;font-size:13px}.card-content .btn{margin-bottom:8px}.card-content small{margin-top:5px}
+.mission-title{padding:15px 15px 5px;display:flex;justify-content:space-between;align-items:center}.mission-title h3{margin:0}.mission-title span{color:#aab4c9;font-size:11px}
+.mission-card>img{margin:8px 12px 0;width:calc(100% - 24px);height:150px;object-fit:cover}
+.challenge-section{margin:25px 4.5%;display:grid;grid-template-columns:1.25fr 1fr;gap:25px;align-items:center}
+.challenge-section>img{width:100%;height:280px;object-fit:cover}.challenge-text p{margin-bottom:15px}
+.challenge-list{list-style:none}.challenge-list li{padding:12px 15px;margin-bottom:8px;border:1px solid rgba(255,255,255,.14);background:rgba(15,24,47,.8);color:#cbd4e4;font-size:13px}
+.challenge-list li:before{content:"□";margin-right:12px}
+.wide-image{width:100%;height:220px;object-fit:cover;margin-top:18px;border:1px solid rgba(255,255,255,.12)}
+.reflection{margin:20px 4.5% 35px;padding:25px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:15px;background:rgba(15,24,47,.94);border:1px solid rgba(255,255,255,.13)}
+.action-panel{margin:25px 4.5%;padding:20px;display:flex;flex-wrap:wrap;gap:12px;background:rgba(15,24,47,.94);border:1px solid rgba(255,255,255,.12)}.action-panel small{flex-basis:100%}
+.contact-container{max-width:850px;margin:20px auto 35px}.contact-form{padding:25px;background:rgba(13,21,42,.96);border:1px solid rgba(255,255,255,.14)}
+.form-heading{display:flex;justify-content:space-between;gap:10px;margin-bottom:20px}.form-heading h2{font-size:18px}.form-heading span{color:#8995ad;font-size:9px}
+.contact-form label{display:block;margin:12px 0 7px;font-size:12px;font-weight:bold}
+.contact-form input,.contact-form textarea{width:100%;padding:12px;color:white;background:#202a40;border:1px solid rgba(255,255,255,.12);outline:none;font-family:inherit;font-size:13px}
+.contact-form input:focus,.contact-form textarea:focus{border-color:#3976f6}.contact-form input::placeholder,.contact-form textarea::placeholder{color:#8994a9}
+.contact-form textarea{min-height:125px;resize:vertical}.contact-form button{margin:18px 0 7px}.form-message{margin-top:12px;color:#8ed9ad;font-size:13px}
+.closing-message{max-width:850px;margin:25px auto 45px}
+.footer{padding:25px 4.5% 15px;background:rgba(8,14,32,.96);border-top:1px solid rgba(255,255,255,.13)}
+.footer-top{display:flex;justify-content:space-between;gap:25px;padding-bottom:20px}.footer-top h3{font-size:14px}.footer-top p{font-size:12px}
+.footer-nav{display:flex;flex-wrap:wrap;gap:18px}.footer-nav a{color:#b7c1d2;font-size:11px}.footer-nav a:hover{color:white}
+.credits{padding-top:12px;border-top:1px solid rgba(255,255,255,.12);color:#aab4c5;font-size:10px}
+@media(max-width:850px){.header{flex-direction:column;align-items:flex-start}.hero{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.challenge-section{grid-template-columns:1fr}.footer-top{flex-direction:column}}
+@media(max-width:560px){.header{padding:15px 5%}.nav{gap:12px}.nav a{font-size:11px}.hero,.section,.page-content{padding:28px 5%}.cards{grid-template-columns:1fr}.destinations{flex-direction:column;gap:5px}.reflection{grid-template-columns:1fr;margin-left:5%;margin-right:5%}.contact-form{padding:17px}.form-heading{flex-direction:column}.footer{padding-left:5%;padding-right:5%}}
+</style>
+</head>
+<body>
+<header class="header">
+  <a href="#inicio" class="logo"><span>◉</span> Exploración de Marte</a>
+  <nav class="nav">
+    <a href="#inicio">Inicio</a>
+    <a href="#contenido">Contenido principal</a>
+    <a href="#informacion">Información adicional</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="hero-text">
+    <span class="eyebrow">HERO · INTRODUCCIÓN</span>
+    <h1>Exploración de Marte y las misiones espaciales</h1>
+    <p>Descubre los misterios del planeta rojo, conoce las misiones espaciales que han permitido explorar su superficie y aprende cómo estos descubrimientos podrían transformar el futuro de la humanidad.</p>
+    <div class="buttons">
+      <a href="#contenido" class="btn primary">Comenzar exploración</a>
+      <a href="#informacion" class="btn secondary">Conocer las misiones espaciales</a>
+    </div>
+    <div class="destinations"><span>→ Contenido principal</span><span>→ Información adicional</span></div>
+  </div>
+  <div class="hero-image"><img src="https://images.unsplash.com/photo-1614728263952-84ea256f9679?auto=format&fit=crop&w=1200&q=72" alt="Planeta Marte en el espacio" fetchpriority="high" decoding="async"></div>
+</section>
+
+<section class="section">
+  <span class="eyebrow">PRESENTACIÓN · TARJETAS TEMÁTICAS</span>
+  <h2>Un viaje hacia lo desconocido</h2>
+  <p class="section-intro">Desde los primeros estudios astronómicos hasta las misiones robóticas actuales, Marte representa uno de los mayores objetivos de la exploración espacial.</p>
+  <div class="cards">
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=800&q=72" alt="Misterios del universo" loading="lazy" decoding="async">
+      <div class="card-content"><h3>Misterios del universo</h3><p>Descubre las preguntas que todavía existen sobre Marte y la posibilidad de vida fuera de la Tierra.</p><button type="button" class="btn secondary" aria-expanded="false" aria-controls="extra-misterios" onclick="toggleExtra(this)">Ver más</button>
+          <div id="extra-misterios" hidden>
+            <h3>Más información: los misterios de Marte</h3>
+            <p>Marte es un planeta rocoso que conserva señales de una historia muy antigua. Sus cráteres, volcanes, valles y capas de sedimentos permiten estudiar los cambios que ha experimentado a lo largo de millones de años.</p>
+            <p>Una de las preguntas más importantes es si alguna vez existió vida microscópica. Los investigadores buscan moléculas orgánicas, minerales que se formaron en presencia de agua y estructuras que puedan conservar información sobre antiguos ambientes habitables. Hasta ahora no se ha confirmado la existencia de vida en Marte.</p>
+            <p>También se estudia por qué el planeta perdió gran parte de su atmósfera y de su agua superficial. Comprender ese proceso ayuda a conocer cómo evolucionan los planetas y qué condiciones pueden favorecer la vida.</p>
+          </div>
+          <small>→ Contenido adicional en esta misma tarjeta</small></div>
+    </article>
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&w=800&q=72" alt="Exploración en Marte" loading="lazy" decoding="async">
+      <div class="card-content"><h3>Exploración en Marte</h3><p>Conoce los robots, instrumentos y descubrimientos que nos ayudan a estudiar el planeta rojo.</p><button type="button" class="btn secondary" aria-expanded="false" aria-controls="extra-exploracion" onclick="toggleExtra(this)">Ver más</button>
+          <div id="extra-exploracion" hidden>
+            <h3>Más información: cómo se explora Marte</h3>
+            <p>Las misiones utilizan distintas máquinas según el objetivo. Los orbitadores giran alrededor del planeta y toman imágenes de grandes regiones; los módulos de aterrizaje realizan mediciones desde un lugar fijo, y los rovers se desplazan para examinar el terreno.</p>
+            <p>Los rovers cuentan con cámaras, sensores, brazos robóticos y herramientas para analizar rocas y suelo. Con estos instrumentos pueden identificar minerales, estudiar las condiciones ambientales y seleccionar lugares de interés científico.</p>
+            <p>La información se transmite a la Tierra mediante antenas y satélites que sirven como enlace de comunicación. Los equipos científicos analizan esos datos para decidir qué lugares conviene investigar después.</p>
+          </div>
+          <small>→ Contenido adicional en esta misma tarjeta</small></div>
+    </article>
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=800&q=72" alt="Futuro de la humanidad" loading="lazy" decoding="async">
+      <div class="card-content"><h3>El futuro de la humanidad</h3><p>Explora los proyectos espaciales y las posibilidades de futuras misiones tripuladas.</p><button type="button" class="btn secondary" aria-expanded="false" aria-controls="extra-futuro" onclick="toggleExtra(this)">Ver más</button>
+          <div id="extra-futuro" hidden>
+            <h3>Más información: el futuro de la humanidad en Marte</h3>
+            <p>Una misión tripulada tendría que resolver problemas que no existen de la misma manera en la Tierra. La atmósfera marciana es muy delgada y no permite respirar; además, las temperaturas son bajas y la superficie recibe radiación que puede perjudicar la salud.</p>
+            <p>Por eso serían necesarios hábitats presurizados, trajes especiales, sistemas para producir oxígeno, recuperar agua y generar energía. También habría que transportar alimentos, herramientas y equipos médicos, y preparar planes para emergencias.</p>
+            <p>Antes de enviar personas, las misiones robóticas ayudan a conocer el terreno, estudiar posibles recursos y probar tecnologías. La llegada de seres humanos a Marte es un objetivo de investigación futura, pero todavía requiere superar importantes desafíos.</p>
+          </div>
+          <small>→ Contenido adicional en esta misma tarjeta</small></div>
+    </article>
+  </div>
+</section>
+
+<section class="page-content" id="contenido">
+  <div class="page-heading">
+    <span class="eyebrow">CABECERA DE CONTENIDO</span>
+    <h1>Descubriendo los secretos del planeta rojo</h1>
+    <p>Marte es uno de los planetas más estudiados del sistema solar. Su superficie, su historia geológica y sus características ambientales lo convierten en un lugar fundamental para comprender mejor nuestro universo.</p>
+  </div>
+
+  <section class="section" id="misterios">
+    <span class="eyebrow">SECCIÓN 1 · MISTERIOS</span>
+    <h2>Misterios del universo relacionado con Marte y la humanidad</h2>
+    <p class="section-intro">El universo contiene numerosos misterios que todavía no tienen una explicación definitiva. Marte es uno de los lugares que más interés despierta entre los científicos debido a las posibilidades que ofrece para investigar el origen de la vida.</p>
+    <div class="cards">
+      <article class="card"><img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=800&q=72" alt="Universo" loading="lazy" decoding="async"><div class="card-content"><h3>¿Estamos solos en el universo?</h3><p>Los científicos investigan diferentes planetas y lunas para conocer si existen condiciones que permitan el desarrollo de la vida fuera de la Tierra.</p></div></article>
+      <article class="card"><img src="https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&w=800&q=72" alt="Marte" loading="lazy" decoding="async"><div class="card-content"><h3>¿Existió vida en Marte?</h3><p>Las investigaciones han encontrado evidencias de antiguos ambientes con agua líquida. Sin embargo, todavía no existe una confirmación de que haya existido vida en Marte.</p></div></article>
+      <article class="card"><img src="https://images.unsplash.com/photo-1614728263952-84ea256f9679?auto=format&fit=crop&w=1200&q=72" alt="Planeta rojo" loading="lazy" decoding="async"><div class="card-content"><h3>Los secretos del planeta rojo</h3><p>Marte conserva características geológicas que permiten investigar su pasado, su clima y los cambios que ha experimentado durante millones de años.</p></div></article>
+    </div>
+  </section>
+
+  <section class="section" id="exploracion">
+    <span class="eyebrow">SECCIÓN 2 · EXPLORACIÓN</span>
+    <h2>Exploración en Marte</h2>
+    <p class="section-intro">La exploración de Marte ha avanzado gracias a diferentes misiones espaciales que utilizan satélites, módulos de aterrizaje y vehículos robóticos para estudiar el planeta.</p>
+    <div class="cards">
+      <article class="card"><img src="https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&w=800&q=72" alt="Vehículos exploradores" loading="lazy" decoding="async"><div class="card-content"><h3>Vehículos exploradores</h3><p>Los rovers son vehículos robóticos diseñados para desplazarse por la superficie marciana, tomar fotografías y analizar muestras del suelo y las rocas.</p></div></article>
+      <article class="card"><img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=72" alt="Descubrimientos científicos" loading="lazy" decoding="async"><div class="card-content"><h3>Descubrimientos científicos</h3><p>Las misiones han permitido estudiar la composición del suelo, la atmósfera, el clima y las señales de antiguos ambientes acuáticos.</p></div></article>
+      <article class="card"><img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=800&q=72" alt="Tecnología espacial" loading="lazy" decoding="async"><div class="card-content"><h3>Tecnología espacial</h3><p>Los avances tecnológicos permiten enviar equipos cada vez más sofisticados para recopilar información y transmitirla a los científicos en la Tierra.</p></div></article>
+    </div>
+  </section>
+  <div class="action-panel">
+    <a href="#informacion" class="btn primary">Conocer más sobre las misiones</a>
+    <a href="#informacion" class="btn secondary">Ir a información adicional</a>
+    <small>→ Información adicional</small>
+  </div>
+</section>
+<section class="page-content" id="informacion">
+  <div class="page-heading">
+    <span class="eyebrow">CABECERA DE INFORMACIÓN</span>
+    <h1>Misiones espaciales y el futuro de la humanidad</h1>
+    <p>La exploración espacial no solamente busca conocer otros planetas. También permite desarrollar nuevas tecnologías, comprender nuestro lugar en el universo y preparar futuras misiones que podrían llevar a los seres humanos más lejos que nunca.</p>
+  </div>
+
+  <section class="section">
+    <span class="eyebrow">SECCIÓN 1 · TARJETAS DE MISIONES</span>
+    <h2>Misiones espaciales importantes</h2>
+    <div class="cards">
+      <article class="card mission-card">
+        <div class="mission-title"><h3>Mariner 4</h3><span>1965</span></div>
+        <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=800&q=72" alt="Misión Mariner 4" loading="lazy" decoding="async">
+        <div class="card-content"><p>En 1965, la misión Mariner 4 realizó el primer sobrevuelo exitoso de Marte y transmitió las primeras imágenes cercanas de su superficie.</p></div>
+      </article>
+      <article class="card mission-card">
+        <div class="mission-title"><h3>Curiosity</h3><span>2012</span></div>
+        <img src="https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&w=800&q=72" alt="Rover Curiosity" loading="lazy" decoding="async">
+        <div class="card-content"><p>El rover Curiosity llegó a Marte en 2012 para investigar el ambiente del cráter Gale y estudiar si existieron condiciones adecuadas para la vida microbiana.</p></div>
+      </article>
+      <article class="card mission-card">
+        <div class="mission-title"><h3>Perseverance</h3><span>2021</span></div>
+        <img src="https://images.unsplash.com/photo-1614728263952-84ea256f9679?auto=format&fit=crop&w=1200&q=72" alt="Rover Perseverance" loading="lazy" decoding="async">
+        <div class="card-content"><p>El rover Perseverance llegó en 2021 para buscar señales de antigua vida microbiana, estudiar la geología marciana y recolectar muestras.</p></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="challenge-section">
+    <div class="challenge-text">
+      <span class="eyebrow">SECCIÓN 2 · DESAFÍOS</span>
+      <h2>¿Podría la humanidad vivir en Marte?</h2>
+      <p>En el futuro, Marte podría convertirse en un destino para misiones tripuladas. Sin embargo, existen grandes desafíos relacionados con la radiación, las bajas temperaturas, la atmósfera y la disponibilidad de recursos.</p>
+      <ul class="challenge-list">
+        <li>Viviendas y hábitats espaciales</li>
+        <li>Producción de agua y oxígeno</li>
+        <li>Protección de los astronautas</li>
+      </ul>
+    </div>
+    <img src="https://images.unsplash.com/photo-1614728263952-84ea256f9679?auto=format&fit=crop&w=1200&q=72" alt="Planeta Marte" loading="lazy" decoding="async">
+  </section>
+
+  <section class="section">
+    <span class="eyebrow">SECCIÓN 3 · PROYECCIÓN</span>
+    <h2>El futuro de la exploración</h2>
+    <p class="section-intro">Las próximas décadas podrían traer nuevas tecnologías, misiones más avanzadas y una mayor cooperación internacional para explorar el espacio.</p>
+    <img class="wide-image" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=72" alt="Futuro de la exploración espacial" loading="lazy" decoding="async">
+  </section>
+
+  <section class="reflection">
+    <div>
+      <span class="eyebrow">SECCIÓN 4 · REFLEXIÓN</span>
+      <h2>El futuro está más cerca de lo que imaginamos</h2>
+      <p>Cada descubrimiento nos acerca a comprender mejor el universo. La exploración espacial representa la curiosidad, el conocimiento y la capacidad de la humanidad para superar nuevos desafíos.</p>
+    </div>
+    <a href="#inicio" class="btn primary">Regresar al inicio</a>
+    <small>→ Inicio</small>
+  </section>
+</section>
+
+<!-- 4. CONTACTO -->
+<section class="page-content" id="contacto">
+  <div class="page-heading">
+    <span class="eyebrow">CONTACTO · PORTAL DE COMUNICACIÓN</span>
+    <h1>Contacta con nosotros</h1>
+    <p>¿Te interesa la exploración espacial? ¿Tienes alguna pregunta o comentario sobre Marte y las misiones espaciales? Envíanos tu mensaje.</p>
+  </div>
+
+  <div class="contact-container">
+    <form id="contactForm" class="contact-form">
+      <div class="form-heading">
+        <h2>Formulario de contacto</h2>
+        <span>FORMULARIO · ESTADO VACÍO</span>
+      </div>
+
+      <label for="nombre">Nombre completo</label>
+      <input type="text" id="nombre" placeholder="Escribe tu nombre" required>
+
+      <label for="correo">Correo electrónico</label>
+      <input type="email" id="correo" placeholder="Escribe tu correo electrónico" required>
+
+      <label for="asunto">Asunto</label>
+      <input type="text" id="asunto" placeholder="Motivo de tu mensaje" required>
+
+      <label for="mensaje">Mensaje</label>
+      <textarea id="mensaje" placeholder="Escribe aquí tu mensaje" required></textarea>
+
+      <button type="submit" class="btn primary">Enviar mensaje</button>
+      <small>→ Envío del formulario · permanece en Contacto</small>
+      <p id="formMessage" class="form-message" aria-live="polite"></p>
+      <div id="localAssistant" class="contact-form" hidden aria-live="polite" style="margin-top:16px;">
+        <div class="form-heading">
+          <h2>◉ Centro de información espacial</h2>
+          <span>ASISTENTE INFORMATIVO</span>
+        </div>
+        <p id="assistantGreeting" style="margin-bottom:12px;"></p>
+        <div id="assistantAnswer" style="white-space:pre-wrap;color:#e8edf8;font-size:14px;line-height:1.8;"></div>
+        <small style="display:block;margin-top:14px;">El asistente identifica temas y combina información guardada en esta página. No está conectado a internet ni representa una comunicación oficial de NASA.</small>
+      </div>
+    </form>
+  </div>
+
+  <div class="closing-message">
+    <span class="eyebrow">MENSAJE DE CIERRE</span>
+    <h2>Gracias por visitar nuestro sitio</h2>
+    <p>Esperamos que hayas disfrutado este recorrido por Marte, sus misterios y las misiones que buscan descubrir los secretos del universo.</p>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div>
+      <h3>Exploración de Marte y las misiones espaciales</h3>
+      <p>Explorando el universo, comprendiendo nuestro futuro</p>
+    </div>
+    <nav class="footer-nav">
+      <a href="#inicio">Inicio</a>
+      <a href="#contenido">Contenido principal</a>
+      <a href="#informacion">Información adicional</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+  <div class="credits">Elaborado por AREVALO LAGARZA RAFAEL · CBTIS.29</div>
+</footer>
+<script>
+function toggleExtra(button) {
+    const panel = document.getElementById(button.getAttribute("aria-controls"));
+    const isOpen = button.getAttribute("aria-expanded") === "true";
+    panel.hidden = isOpen;
+    button.setAttribute("aria-expanded", String(!isOpen));
+    button.textContent = isOpen ? "Ver más" : "Ver menos";
+}
+
+const contactForm = document.getElementById("contactForm");
+const submitButton = contactForm.querySelector('button[type="submit"]');
+const formMessage = document.getElementById("formMessage");
+const localAssistant = document.getElementById("localAssistant");
+const assistantGreeting = document.getElementById("assistantGreeting");
+const assistantAnswer = document.getElementById("assistantAnswer");
+
+// Motor local de respuestas: reconoce temas, sinónimos e intención de la pregunta.
+function normalizeText(value) {
+    return (value || "")
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[¿?¡!,.;:()]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+}
+
+const knowledgeBase = [
+    {
+        id: "marte",
+        terms: ["marte", "planeta rojo", "superficie marciana", "suelo marciano"],
+        title: "¿Qué es Marte?",
+        answer: "Marte es el cuarto planeta del sistema solar. Es un mundo rocoso, frío y con una atmósfera muy delgada compuesta principalmente de dióxido de carbono. Su color rojizo se debe a minerales de hierro oxidados presentes en el polvo y las rocas. Se estudia con orbitadores, módulos de aterrizaje y vehículos robóticos para conocer su geología, su clima y su posible habitabilidad."
+    },
+    {
+        id: "vida",
+        terms: ["vida", "alien", "extraterrestre", "microbio", "vivio", "seres vivos", "habitabilidad"],
+        title: "¿Existe vida en Marte o fuera de la Tierra?",
+        answer: "Hasta ahora no existe una confirmación científica de vida fuera de la Tierra. En Marte se han encontrado señales de antiguos ambientes con agua líquida y moléculas orgánicas, pero eso no demuestra que haya existido vida. Los científicos buscan posibles señales biológicas estudiando rocas, minerales y muestras del planeta."
+    },
+    {
+        id: "curiosity",
+        terms: ["curiosity", "curiositi"],
+        title: "El rover Curiosity",
+        answer: "Curiosity llegó a Marte en agosto de 2012 y explora el cráter Gale. Analiza rocas, suelo y atmósfera para reconstruir cómo fue el ambiente marciano. Su objetivo es determinar si alguna vez existieron condiciones adecuadas para la vida microbiana."
+    },
+    {
+        id: "perseverance",
+        terms: ["perseverance", "perseverans", "perseverancia", "jezero"],
+        title: "El rover Perseverance",
+        answer: "Perseverance llegó a Marte en febrero de 2021 y explora el cráter Jezero. Estudia la geología y busca señales que podrían indicar antigua vida microbiana. También recoge y almacena muestras de roca para que puedan analizarse con mayor detalle en el futuro."
+    },
+    {
+        id: "agua",
+        terms: ["agua", "hielo", "rios", "rio", "lagos", "oceano", "mares", "liquida", "liquido"],
+        title: "El agua en Marte",
+        answer: "Hay evidencia de que Marte tuvo agua líquida en su superficie hace miles de millones de años: antiguos cauces, deltas, minerales y sedimentos. Actualmente el agua se encuentra sobre todo como hielo en los polos y bajo la superficie. Estudiarla ayuda a reconstruir el clima antiguo y a evaluar recursos para futuras misiones."
+    },
+    {
+        id: "clima",
+        terms: ["temperatura", "clima", "frio", "calor", "tormenta", "polvo", "estaciones"],
+        title: "El clima y la temperatura",
+        answer: "Marte es mucho más frío que la Tierra; su temperatura media ronda los -60 °C, aunque cambia según la estación, la hora y la región. Su atmósfera es muy delgada y retiene poco calor. También ocurren tormentas de polvo que pueden extenderse por grandes regiones."
+    },
+    {
+        id: "humanos",
+        terms: ["vivir", "habitar", "humanos", "astronauta", "personas", "humanidad", "colonizar", "colonia"],
+        title: "¿Podrían vivir los seres humanos en Marte?",
+        answer: "Sería muy difícil vivir en Marte. Las personas necesitarían refugios presurizados, oxígeno, agua, alimentos, energía y protección contra la radiación. La atmósfera no es respirable y las temperaturas son muy bajas. Antes de enviar personas, será necesario probar sistemas de soporte vital y estudiar los riesgos."
+    },
+    {
+        id: "nasa",
+        terms: ["nasa", "agencia espacial", "administracion espacial"],
+        title: "La NASA",
+        answer: "La NASA es la agencia espacial civil de Estados Unidos. Desarrolla misiones científicas, observatorios y exploradores robóticos. Entre sus misiones relacionadas con Marte están Viking, Pathfinder, Spirit, Opportunity, Curiosity y Perseverance. El emblema de esta página es decorativo: el sitio no pertenece a la NASA."
+    },
+    {
+        id: "universo",
+        terms: ["universo", "galaxia", "galaxias", "estrella", "estrellas", "agujero negro", "big bang", "sistema solar"],
+        title: "El universo",
+        answer: "El universo contiene galaxias, estrellas, planetas, gas, polvo y muchos otros objetos. Las galaxias agrupan enormes cantidades de estrellas y sistemas planetarios. Los astrónomos lo investigan con telescopios terrestres y espaciales que observan distintos tipos de luz."
+    },
+    {
+        id: "misiones",
+        terms: ["mision", "misiones", "exploracion", "rover", "robot", "sonda", "aterrizaje", "satellite", "orbitador"],
+        title: "¿Cómo se explora Marte?",
+        answer: "La exploración de Marte combina varias tecnologías. Los orbitadores observan el planeta desde el espacio; los módulos de aterrizaje realizan mediciones desde la superficie; y los rovers recorren el terreno para fotografiar, perforar y analizar rocas. Los datos se envían a la Tierra mediante antenas y satélites de comunicación."
+    },
+    {
+        id: "distancia",
+        terms: ["distancia", "lejos", "kilometros", "viaje", "cuanto tarda", "tiempo llegar"],
+        title: "La distancia y el viaje a Marte",
+        answer: "La distancia entre la Tierra y Marte cambia porque ambos planetas se mueven alrededor del Sol. Según la posición de cada uno, pueden estar a decenas o cientos de millones de kilómetros. Un viaje robótico suele tardar varios meses; el tiempo exacto depende de la trayectoria y de la tecnología utilizada."
+    },
+    {
+        id: "gravedad",
+        terms: ["gravedad", "peso", "gravedad marciana", "flotar"],
+        title: "La gravedad de Marte",
+        answer: "La gravedad en Marte es aproximadamente el 38 % de la gravedad terrestre. Una persona pesaría allí bastante menos que en la Tierra, aunque su masa sería la misma. Esta diferencia sería importante para la salud y para el movimiento de los astronautas."
+    },
+    {
+        id: "oxigeno",
+        terms: ["oxigeno", "respirar", "aire", "atmosfera", "atmosferica"],
+        title: "El aire y el oxígeno",
+        answer: "La atmósfera de Marte está compuesta principalmente por dióxido de carbono y es muy delgada. No se puede respirar directamente. Para una misión humana se necesitaría producir o transportar oxígeno y mantenerlo dentro de hábitats presurizados."
+    }
+];
+
+function detectIntent(question) {
+    const q = normalizeText(question);
+    if (/^(hola|buenas|buenos dias|buenas tardes|buenas noches|hey)\b/.test(q)) return "greeting";
+    if (/\b(gracias|muchas gracias)\b/.test(q) && q.length < 45) return "thanks";
+    if (/\b(quien eres|que puedes hacer|como funcionas)\b/.test(q)) return "about";
+    return "question";
+}
+
+function createLocalAnswer(question, subject) {
+    const q = normalizeText((subject || "") + " " + (question || ""));
+    const intent = detectIntent(question);
+    if (intent === "greeting") return "¡Hola! Soy el asistente informativo de esta página. Puedo ayudarte con dudas sobre Marte, sus exploradores, el agua, el clima, la vida, las misiones espaciales y otros temas del universo. ¿Qué te gustaría saber?";
+    if (intent === "thanks") return "¡Con gusto! Puedes escribirme otra pregunta cuando quieras. Estoy aquí para ayudarte a explorar el tema.";
+    if (intent === "about") return "Soy un asistente informativo integrado en esta página. Analizo las palabras de tu pregunta, identifico los temas relacionados y preparo una explicación con la información que tengo guardada. Funciono sin conexión a internet, así que no puedo consultar noticias ni responder con la amplitud de una IA en línea.";
+
+    const ranked = knowledgeBase.map(item => {
+        let score = 0;
+        for (const term of item.terms) {
+            const t = normalizeText(term);
+            if (q.includes(t)) score += t.includes(" ") ? 4 : 2;
+        }
+        // Reconoce algunas formas habituales de preguntar.
+        if (item.id === "agua" && /\b(hubo|habia|existe|encontraron)\b/.test(q)) score += 1;
+        if (item.id === "humanos" && /\b(podemos|podrian|podria|posible)\b/.test(q)) score += 1;
+        return { item, score };
+    }).filter(x => x.score > 0).sort((a, b) => b.score - a.score);
+
+    if (!ranked.length) {
+        return "No encontré una coincidencia clara para esa duda. Puedo responder preguntas sobre Marte, agua, clima, vida, gravedad, oxígeno, Curiosity, Perseverance, NASA, viajes espaciales y el universo.\\n\\nIntenta escribirla de otra manera o agrega el tema principal. Por ejemplo: “¿Por qué Marte es rojo?”, “¿Cómo funciona Perseverance?” o “¿Se puede respirar en Marte?”.";
+    }
+
+    // Si la pregunta trata de más de un tema, combina hasta tres respuestas relevantes.
+    const selected = ranked.slice(0, 3);
+    let response = selected.map(x => x.item.title + "\\n" + x.item.answer).join("\\n\\n");
+    if (ranked.length > 3) response += "\\n\\nTambién detecté otros temas en tu mensaje. Si quieres, puedes separarlos en preguntas para explicarlos con más detalle.";
+    response += "\\n\\n¿Quieres profundizar en algún punto o tienes otra duda?";
+    return response;
+}
+
+contactForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const nombre = document.getElementById("nombre").value.trim();
+    const asunto = document.getElementById("asunto").value.trim();
+    const pregunta = document.getElementById("mensaje").value.trim();
+
+    if (!nombre || !asunto || !pregunta) {
+        formMessage.textContent = "Completa todos los campos antes de enviar tu consulta.";
+        return;
+    }
+
+    submitButton.disabled = true;
+    submitButton.textContent = "Preparando respuesta...";
+    formMessage.textContent = "Tu consulta se está procesando.";
+
+    // Pequeña pausa visual; no requiere internet ni servidor.
+    window.setTimeout(function() {
+        assistantGreeting.textContent = "Hola, " + nombre + ". Leí tu consulta y encontré esta información relacionada:";
+        assistantAnswer.textContent = createLocalAnswer(pregunta, asunto);
+        localAssistant.hidden = false;
+        formMessage.textContent = "Tu consulta ha sido procesada.";
+        submitButton.disabled = false;
+        submitButton.textContent = "Enviar mensaje";
+        localAssistant.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }, 350);
+});
+</script>
+
+</body>
+</html>
